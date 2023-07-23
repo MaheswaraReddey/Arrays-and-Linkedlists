@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class MissingNumbers {
+    public static List<Integer> findMissingNumbers(int[] array) {
+        Arrays.sort(array);
+        List<Integer> missingNumbers = new ArrayList<>();
+
+        int nextExpectedNumber = array[0];
+        for (int i = 0; i < array.length; i++) {
+            while (nextExpectedNumber < array[i]) {
+                missingNumbers.add(nextExpectedNumber);
+                nextExpectedNumber++;
+            }
+            nextExpectedNumber++;
+        }
+
+        while (nextExpectedNumber <= array[array.length - 1]) {
+            missingNumbers.add(nextExpectedNumber);
+            nextExpectedNumber++;
+        }
+
+        return missingNumbers;
+    }
+
+    public static void main(String[] args) {
+       
+	System.out.println("Enter the size of the array: ");
+	  Scanner scan= new Scanner(System.in);
+            int N = scan.nextInt();
+            int[] inputArray = new int[N];
+	System.out.println("Enter the values: ");
+	for(int i=0;i<N;i++)
+	{
+	   inputArray[i]=scan.nextInt();
+	 }
+        List<Integer> missingNumbers = findMissingNumbers(inputArray);
+
+        if (missingNumbers.isEmpty()) {
+            System.out.println("No missing numbers found.");
+        } else {
+            System.out.println("Missing numbers:");
+            for (int number : missingNumbers) {
+                System.out.print(number + " ");
+            }
+        }
+    }
+}
