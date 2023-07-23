@@ -1,0 +1,27 @@
+public class CumulativeMultiple {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            
+            System.out.println("Enter the size of the array: ");
+            int N = scanner.nextInt();
+            int[] array = new int[N];
+            int cumulativeMultiple = 1;
+
+            System.out.println("Enter " + N + " integers:");
+            for (int i = 0; i < N; i++) {
+                array[i] = scanner.nextInt();
+                cumulativeMultiple *= array[i];
+                array[i] = cumulativeMultiple;
+                System.out.print(array[i] + " ");
+            }
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero!");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+}
