@@ -1,0 +1,51 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+public class SingularSocksCounter {
+    static int countSingularSocks(int[] arrNum) {
+        int maxSockID = getMaxSockID(arrNum);
+
+
+        int[] sockCountArray = new int[maxSockID + 1];
+
+       
+        for (int sock : arrNum) {
+            sockCountArray[sock]++;
+        }
+
+    
+        int singularSocksCount = 0;
+        for (int count : sockCountArray) {
+            if (count == 1) {
+                singularSocksCount++;
+            }
+        }
+
+        return singularSocksCount;
+    }
+
+   
+    static int getMaxSockID(int[] arrNum) {
+        int maxID = Integer.MIN_VALUE;
+        for (int sock : arrNum) {
+            if (sock > maxID) {
+                maxID = sock;
+            }
+        }
+        return maxID;
+    }
+
+    public static void main(String[] args) {
+      System.out.println("Enter the size of the array: ");
+	  Scanner scan = new Scanner(System.in);
+            int N = scan.nextInt();
+            int[] arrNum = new int[N];
+	System.out.println("Enter the values: ");
+	for(int i=0;i<N;i++)
+	{
+	   arrNum[i]=scan.nextInt();
+	 }
+        int singularSocksCount = countSingularSocks(arrNum);
+        System.out.println("Count of singular socks: " + singularSocksCount);
+    }
+}
