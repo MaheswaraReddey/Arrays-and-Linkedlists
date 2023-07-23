@@ -74,7 +74,7 @@ public class RemoveRepeatedIntegers {
         System.out.println("Original Linked List:");
         printLinkedList(head);
 
-        // Task: Remove duplicates from the linked list
+     
         LinkedListNode deduplicatedHead = removeDuplicates(head);
         System.out.println("Linked List after removing duplicates:");
         printLinkedList(deduplicatedHead);
